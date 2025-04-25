@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilo do Calendário */
+    .calendar {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .calendar h2 {
+      margin: 0;
+      padding: 10px;
+      background-color: #2b7a78;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .calendar .navigation {
+      margin: 20px 0;
+    }
+
+    .calendar button {
+      background-color: #2b7a78;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .calendar table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .calendar th, .calendar td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .calendar th {
+      background-color: #2b7a78;
+      color: white;
+    }
+
+    .calendar td:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .calendar .today {
+      background-color: #ffeb3b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calendário</h1>
+  <p>Esse site foi criado como parte do meu aprendizado de programação web! Aqui está um calendário interativo:</p>
+
+  <!-- Calendário Interativo -->
+  <div class="calendar">
+    <h2 id="calendarTitle">Janeiro 2025</h2>
+    <div class="navigation">
+      <button onclick="changeMonth(-1)">&#60; Mês Anterior</button>
+      <button onclick="changeMonth(1)">Próximo Mês &#62;</button>
+    </div>
+    <table id="calendarTable"></table>
+  </div>
+
+  <script>
+    const calendarTitle = document.getElementById('calendarTitle');
+    const calendarTable = document.getElementById('calendarTable');
+
+    let currentDate = new Date();
+
+    // Função para renderizar o calendário
+    function renderCalendar() {
+      const month = currentDate.getMonth(); // Mês (0-11)
+      const year = currentDate.getFullYear(); // Ano
+
+      // Atualizar título do mês
+      calendarTitle.innerText = `${getMonthName(month)} ${year}`;
+
+      // Criar cabeçalho da tabela (dias da semana)
+      const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+      let headerRow = '<tr>';
+      daysOfWeek.forEach(day => {
+        headerRow += `<th>${day}</th>`;
+      });
+      headerRow += '</tr>';
+      calendarTable.innerHTML = headerRow;
+
+      // Determinar o primeiro dia do mês
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Criar as células do calendário
+      let dayRow = '<tr>';
+      let dayCount = 1;
+
+      // Preencher os dias anteriores com células vazias
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        dayRow += '<td></td>';
+      }
+
+      // Preencher o calendário com os dias do mês
+      for (let i = firstDayOfMonth; i < 7; i++) {
+        dayRow += `<td>${dayCount}</td>`;
+        dayCount++;
+      }
+      dayRow += '</tr>';
+      calendarTable.innerHTML += dayRow;
+
+      // Continuar preenchendo os dias do mês
+      while (dayCount <= daysInMonth) {
+        dayRow = '<tr>';
+        for (let i = 0; i < 7 && dayCount <= daysInMonth; i++) {
+          dayRow += `<td>${dayCount}</td>`;
+          dayCount++;
+        }
+        dayRow += '</tr>';
+        calendarTable.innerHTML += dayRow;
+      }
+
+      // Marcar o dia de hoje
+      highlightToday(month, year);
+    }
+
+    // Função para destacar o dia de hoje
+    function highlightToday(month, year) {
+      const today = new Date();
+      if (today.getMonth() === month && today.getFullYear() === year) {
+        const todayCell = calendarTable.querySelectorAll('td');
+        todayCell.forEach(cell => {
+          if (parseInt(cell.innerText) === today.getDate()) {
+            cell.classList.add('today');
+          }
+        });
+      }
+    }
+
+    // Função para obter o nome do mês
+    function getMonthName(month) {
+      const monthNames = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+      ];
+      return monthNames[month];
+    }
+
+    // Função para mudar o mês
+    function changeMonth(direction) {
+      currentDate.setMonth(currentDate.getMonth() + direction);
+      renderCalendar();
+    }
+
+    // Inicializar o calendário
+    renderCalendar();
+  </script>
+
+  <a href="index.html"><button>Voltar para o Início</button></a>
+</body>
+</html>
+

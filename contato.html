@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos para a página de Contato */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-info {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h2 {
+      text-align: center;
+      font-size: 24px;
+      color: #2b7a78;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap; /* Permite que os itens se ajustem em telas pequenas */
+    }
+
+    .contact-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .contact-card .contact-details {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .contact-card .contact-details h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #2b7a78;
+    }
+
+    .contact-card .contact-details p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .contact-card .contact-details a {
+      color: #2b7a78;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-card .contact-details a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #2b7a78;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #205e5b;
+    }
+
+    /* Media Query para telas menores (celulares) */
+    @media (max-width: 600px) {
+      .contact-card {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-card img {
+        margin-bottom: 15px;
+      }
+
+      .contact-card .contact-details {
+        text-align: center;
+      }
+
+      .contact-info h2 {
+        font-size: 20px;
+      }
+    }
+
+    /* Media Query para telas médias (tablets e telas um pouco maiores) */
+    @media (max-width: 768px) {
+      .contact-info {
+        padding: 15px;
+      }
+
+      .contact-card img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .contact-card .contact-details h3 {
+        font-size: 18px;
+      }
+
+      .contact-card .contact-details p {
+        font-size: 14px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="contact-info">
+    <h2>Contatos Importantes</h2>
+
+    <!-- Contato 1 -->
+    <div class="contact-card">
+      <img src="https://via.placeholder.com/60" alt="Pessoa 1">
+      <div class="contact-details">
+        <h3>Maria Silva</h3>
+        <p>Email: <a href="mailto:maria.silva@email.com">maria.silva@email.com</a></p>
+        <p>Telefone: <a href="tel:+5511999999999">+55 (11) 99999-9999</a></p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/maria.silva" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/maria.silva" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contato 2 -->
+    <div class="contact-card">
+      <img src="https://via.placeholder.com/60" alt="Pessoa 2">
+      <div class="contact-details">
+        <h3>João Oliveira</h3>
+        <p>Email: <a href="mailto:joao.oliveira@email.com">joao.oliveira@email.com</a></p>
+        <p>Telefone: <a href="tel:+5511988888888">+55 (11) 98888-8888</a></p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/joao-oliveira" target="_blank">LinkedIn</a>
+          <a href="https://twitter.com/joao.oliveira" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contato 3 -->
+    <div class="contact-card">
+      <img src="https://via.placeholder.com/60" alt="Pessoa 3">
+      <div class="contact-details">
+        <h3>Ana Costa</h3>
+        <p>Email: <a href="mailto:ana.costa@email.com">ana.costa@email.com</a></p>
+        <p>Telefone: <a href="tel:+5511977777777">+55 (11) 97777-7777</a></p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/ana.costa" target="_blank">Instagram</a>
+          <a href="https://github.com/ana-costa" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
